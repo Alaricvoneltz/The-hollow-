@@ -2,125 +2,222 @@ local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
-local localPlayer = Players.LocalPlayer
+local LocalPlayer = Players.LocalPlayer
 
--- Memuat Alaric UI Library
+-- Load Alaric UI Library
 local AlaricLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Alaricvoneltz/Alaricgui-/refs/heads/main/Main"))()
 
 local Window = AlaricLibrary:CreateWindow({
     Name = "Alaric Hub",
-    SubTitle = "The Hollow & Badges"
+    SubTitle = "The Hollow, UGC, & Badges"
 })
 
 -- ==================== TAB SYSTEM LOGS ====================
--- Wajib dibuat agar fungsi Window:Log() berjalan tanpa error
 local TabLogs = Window:CreateTab({ Name = "Logs Console" })
 local SubLogs = TabLogs:CreateSubTab({ Name = "System Logs" })
 
--- ==================== TAB MAIN SCRIPTS ====================
-local TabScripts = Window:CreateTab({ Name = "Main Scripts" })
-local SubHollow = TabScripts:CreateSubTab({ Name = "The Hollow" })
-local SubUGC = TabScripts:CreateSubTab({ Name = "UGC" })
-
--- ==================== TAB BADGES & CUSTOM ====================
-local TabBadge = Window:CreateTab({ Name = "Badges & Events" })
-local SubBadgeList = TabBadge:CreateSubTab({ Name = "Badge List" })
-local SubCustom = TabBadge:CreateSubTab({ Name = "Custom Helpers" })
-
--- Fungsi helper yang disesuaikan untuk Alaric UI
+-- ==================== FUNGSI HELPER ====================
+-- Pastikan fungsi CreateButton SUDAH ADA di dalam library GitHub-mu!
 local function AddScriptEntry(TargetSubTab, Name, Url)
-    local scriptString = 'loadstring(game:HttpGet("' .. Url .. '"))()'
-    
-    -- Asumsi library-mu mendukung CreateButton dengan format standar
     TargetSubTab:CreateButton({
         Name = "Execute " .. Name,
         Callback = function()
             loadstring(game:HttpGet(Url))()
-            Window:Log("Executed Script: " .. Name)
-        end,
-    })
-    
-    TargetSubTab:CreateButton({
-        Name = "Copy " .. Name .. " Script",
-        Callback = function()
-            setclipboard(scriptString)
-            Window:Log("Copied to clipboard: " .. Name)
+            Window:Log("Executed: " .. Name)
         end,
     })
 end
 
--- ==================== THE HOLLOW ====================
-AddScriptEntry(SubHollow, "Floor 1", "https://paste-web.baconbossscript.workers.dev/raw/U3eRMC390A")
-AddScriptEntry(SubHollow, "Floor 2", "https://paste-web.baconbossscript.workers.dev/raw/it5ijOv4wy")
-AddScriptEntry(SubHollow, "Floor 3", "https://paste-web.baconbossscript.workers.dev/raw/y9C7ndcH7u")
-AddScriptEntry(SubHollow, "Floor 4", "https://paste-web.baconbossscript.workers.dev/raw/HohiNT23xo")
 
--- ==================== UGC ====================
-AddScriptEntry(SubUGC, "Flee The Facility", "https://raw.githubusercontent.com/Infected01/Flee-The-Facility/refs/heads/main/Hammer")
-AddScriptEntry(SubUGC, "Aooni Nightmare", "https://paste-web.baconbossscript.workers.dev/raw/qexa0dgJjg")
-AddScriptEntry(SubUGC, "Dandy World", "https://paste-web.baconbossscript.workers.dev/raw/BKyaSqIO29")
-AddScriptEntry(SubUGC, "The Doors", "https://paste-web.baconbossscript.workers.dev/raw/CzLyafM3EO")
-AddScriptEntry(SubUGC, "Demonology", "https://paste-web.baconbossscript.workers.dev/raw/8BH7avrxYa")
-AddScriptEntry(SubUGC, "Dead Rails", "https://paste-web.baconbossscript.workers.dev/raw/tLWO99Ru5v")
-AddScriptEntry(SubUGC, "Home Alone", "https://paste-web.baconbossscript.workers.dev/raw/FpDd0rU2TQ")
+-- =======================================================
+-- ==================== TAB THE HOLLOW ====================
+-- =======================================================
+local TabHollow = Window:CreateTab({ Name = "The Hollow" })
+-- Tetap menggunakan 1 Sub-Tab agar library-mu tidak error saat merender elemen
+local SubHollowMain = TabHollow:CreateSubTab({ Name = "Floor Scripts" })
 
--- ==================== BADGE LIST ====================
-AddScriptEntry(SubBadgeList, "Bloxburg", "https://paste-web.baconbossscript.workers.dev/raw/RGWwwyZc7K")
-AddScriptEntry(SubBadgeList, "Steal An Egg", "https://paste-web.baconbossscript.workers.dev/raw/NEZehkFxR1")
-AddScriptEntry(SubBadgeList, "Paranormal", "https://paste-web.baconbossscript.workers.dev/raw/OuiGNBjBUu")
-AddScriptEntry(SubBadgeList, "Hunted", "https://paste-web.baconbossscript.workers.dev/raw/8zggPGh005")
-AddScriptEntry(SubBadgeList, "Duck Duck", "https://paste-web.baconbossscript.workers.dev/raw/8KyB5ebeyN")
-AddScriptEntry(SubBadgeList, "Survive Overnight", "https://paste-web.baconbossscript.workers.dev/raw/H7XPoCprJF")
-AddScriptEntry(SubBadgeList, "Murder Duels", "https://raw.githubusercontent.com/Infected01/Murder-Duels/refs/heads/main/The%20Hollow")
-AddScriptEntry(SubBadgeList, "Search For The Needle", "https://paste-web.baconbossscript.workers.dev/raw/qlKDB5TfJh")
-AddScriptEntry(SubBadgeList, "Toons Universe", "https://paste-web.baconbossscript.workers.dev/raw/XQNjbCg1Ts")
-AddScriptEntry(SubBadgeList, "Moo Moo Mistery", "https://paste-web.baconbossscript.workers.dev/raw/b66WGbXda0")
-AddScriptEntry(SubBadgeList, "Creatures Of Sonaria", "https://paste-web.baconbossscript.workers.dev/raw/d38TNHJaDu")
-AddScriptEntry(SubBadgeList, "Sell Lemons", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/SellLemons")
-AddScriptEntry(SubBadgeList, "+1 Speed Keyboard Escape", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/SpeedKeyboard")
-AddScriptEntry(SubBadgeList, "Racket Rival", "https://access.valkorym.com/RacketRivals.lua")
+AddScriptEntry(SubHollowMain, "Floor 1", "https://paste-web.baconbossscript.workers.dev/raw/U3eRMC390A")
+AddScriptEntry(SubHollowMain, "Floor 2", "https://paste-web.baconbossscript.workers.dev/raw/it5ijOv4wy")
+AddScriptEntry(SubHollowMain, "Floor 3", "https://paste-web.baconbossscript.workers.dev/raw/y9C7ndcH7u")
+AddScriptEntry(SubHollowMain, "Floor 4", "https://paste-web.baconbossscript.workers.dev/raw/HohiNT23xo")
 
--- ==================== CUSTOM HELPERS SECTION ====================
+-- Toggle Auto-Win ZombieBridge (Floor 4)
+SubHollowMain:CreateToggle({
+    Name = "Auto-Win ZombieBridge",
+    Callback = function(Value)
+        if Value then
+            task.spawn(function()
+                Window:Log("[Auto-Win] Memulai ZombieBridge...")
+                local RemoteUtils
+                pcall(function()
+                    for _, obj in pairs(ReplicatedStorage:GetDescendants()) do
+                        if obj:IsA("ModuleScript") and obj.Name == "RemoteUtils" then
+                            RemoteUtils = require(obj)
+                            break
+                        end
+                    end
+                end)
+
+                local function getRemoteFunction(name)
+                    if RemoteUtils and RemoteUtils.GetRemoteFunction then
+                        local success, rf = pcall(function()
+                            return RemoteUtils.GetRemoteFunction(name)
+                        end)
+                        if success and rf then return rf end
+                    end
+                    return ReplicatedStorage:FindFirstChild(name, true)
+                end
+
+                local pathRemote = getRemoteFunction("ZombieBridgePath")
+                local finishRemote = getRemoteFunction("ZombieBridgeFinish")
+
+                if pathRemote then
+                    local success, data = pcall(function()
+                        return pathRemote:InvokeServer()
+                    end)
+                    
+                    if success and data and data.Path then
+                        local character = LocalPlayer.Character
+                        local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+                        
+                        if rootPart then
+                            Window:Log("[Auto-Win] Jalur ditemukan! Mulai teleport...")
+                            
+                            local tileFolder = workspace:FindFirstChild("ZombieBridgeProps") and workspace.ZombieBridgeProps:FindFirstChild("Tiles")
+                            
+                            if tileFolder then
+                                for _, tileIndex in ipairs(data.Path) do
+                                    local tilePart = tileFolder:FindFirstChild("Tile" .. tileIndex)
+                                    if tilePart then
+                                        character:PivotTo(tilePart.CFrame + Vector3.new(0, 3, 0))
+                                        task.wait(0.15)
+                                    end
+                                end
+                            end
+                            
+                            if finishRemote then
+                                pcall(function()
+                                    finishRemote:InvokeServer()
+                                end)
+                            end
+                            Window:Log("[Auto-Win] Selesai!")
+                        end
+                    else
+                        Window:Log("[Auto-Win] Gagal mengambil data Path dari server.")
+                    end
+                else
+                    Window:Log("[Auto-Win] Remote 'ZombieBridgePath' tidak ditemukan.")
+                end
+            end)
+        end
+    end
+})
+
+
+-- =======================================================
+-- ======================= TAB UGC =======================
+-- =======================================================
+local TabUGC = Window:CreateTab({ Name = "UGC" })
+
+local SubFlee = TabUGC:CreateSubTab({ Name = "Flee The Facility" })
+local SubAooni = TabUGC:CreateSubTab({ Name = "Aooni Nightmare" })
+local SubDandy = TabUGC:CreateSubTab({ Name = "Dandy World" })
+local SubDoors = TabUGC:CreateSubTab({ Name = "The Doors" })
+local SubDemon = TabUGC:CreateSubTab({ Name = "Demonology" })
+local SubRails = TabUGC:CreateSubTab({ Name = "Dead Rails" })
+local SubHome = TabUGC:CreateSubTab({ Name = "Home Alone" })
+
+AddScriptEntry(SubFlee, "Hammer Script", "https://raw.githubusercontent.com/Infected01/Flee-The-Facility/refs/heads/main/Hammer")
+AddScriptEntry(SubAooni, "UGC Script", "https://paste-web.baconbossscript.workers.dev/raw/qexa0dgJjg")
+AddScriptEntry(SubDandy, "UGC Script", "https://paste-web.baconbossscript.workers.dev/raw/BKyaSqIO29")
+AddScriptEntry(SubDoors, "UGC Script", "https://paste-web.baconbossscript.workers.dev/raw/CzLyafM3EO")
+AddScriptEntry(SubDemon, "UGC Script", "https://paste-web.baconbossscript.workers.dev/raw/8BH7avrxYa")
+AddScriptEntry(SubRails, "UGC Script", "https://paste-web.baconbossscript.workers.dev/raw/tLWO99Ru5v")
+AddScriptEntry(SubHome, "UGC Script", "https://paste-web.baconbossscript.workers.dev/raw/FpDd0rU2TQ")
+
+
+-- =======================================================
+-- ====================== TAB BADGE ======================
+-- =======================================================
+local TabBadge = Window:CreateTab({ Name = "Badge" })
+
+-- 21 Sub-Tabs
+local SubBloxburg = TabBadge:CreateSubTab({ Name = "Bloxburg" })
+local SubEgg = TabBadge:CreateSubTab({ Name = "Steal An Egg" })
+local SubParanormal = TabBadge:CreateSubTab({ Name = "Paranormal" })
+local SubHunted = TabBadge:CreateSubTab({ Name = "Hunted" })
+local SubDuck = TabBadge:CreateSubTab({ Name = "Duck Duck" })
+local SubSurvive = TabBadge:CreateSubTab({ Name = "Survive Overnight" })
+local SubMurder = TabBadge:CreateSubTab({ Name = "Murder Duels" })
+local SubNeedle = TabBadge:CreateSubTab({ Name = "Search For Needle" })
+local SubToons = TabBadge:CreateSubTab({ Name = "Toons Universe" })
+local SubMoo = TabBadge:CreateSubTab({ Name = "Moo Moo Mistery" })
+local SubSonaria = TabBadge:CreateSubTab({ Name = "Creatures Of Sonaria" })
+local SubLemons = TabBadge:CreateSubTab({ Name = "Sell Lemons" })
+local SubKeyboard = TabBadge:CreateSubTab({ Name = "+1 Speed Keyboard" })
+local SubRacket = TabBadge:CreateSubTab({ Name = "Racket Rival" })
+local SubGuts = TabBadge:CreateSubTab({ Name = "Guts & Black Powder" })
+local SubSleep = TabBadge:CreateSubTab({ Name = "Sleep Paralysis" })
+local SubPrism = TabBadge:CreateSubTab({ Name = "Prism Runaway" })
+local SubLeaves = TabBadge:CreateSubTab({ Name = "Clean Leaves" })
+local SubRoyale = TabBadge:CreateSubTab({ Name = "Royale High" })
+local SubGarden = TabBadge:CreateSubTab({ Name = "Grow a Garden 2" })
+local SubCarve = TabBadge:CreateSubTab({ Name = "Carve Wood" })
+
+-- Mengisi Badge (Scripts Luar)
+AddScriptEntry(SubBloxburg, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/RGWwwyZc7K")
+AddScriptEntry(SubEgg, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/NEZehkFxR1")
+AddScriptEntry(SubParanormal, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/OuiGNBjBUu")
+AddScriptEntry(SubHunted, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/8zggPGh005")
+AddScriptEntry(SubDuck, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/8KyB5ebeyN")
+AddScriptEntry(SubSurvive, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/H7XPoCprJF")
+AddScriptEntry(SubMurder, "Execute Script", "https://raw.githubusercontent.com/Infected01/Murder-Duels/refs/heads/main/The%20Hollow")
+AddScriptEntry(SubNeedle, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/qlKDB5TfJh")
+AddScriptEntry(SubToons, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/XQNjbCg1Ts")
+AddScriptEntry(SubMoo, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/b66WGbXda0")
+AddScriptEntry(SubSonaria, "Execute Script", "https://paste-web.baconbossscript.workers.dev/raw/d38TNHJaDu")
+AddScriptEntry(SubLemons, "Execute Script", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/SellLemons")
+AddScriptEntry(SubKeyboard, "Execute Script", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/SpeedKeyboard")
+AddScriptEntry(SubRacket, "Execute Script", "https://access.valkorym.com/RacketRivals.lua")
+
+
+-- ==================== CUSTOM HELPERS ====================
 
 -- [ Guts and Black Powder ]
-SubCustom:CreateButton({
-    Name = "[G&B] Execute Helper Script",
+SubGuts:CreateButton({
+    Name = "Execute Helper Script",
     Callback = function()
-        pcall(function()
-            loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/04adf4b7efffad41374a62e13396c97e.lua"))()
-        end)
-        Window:Log("[G&B] Helper Script Executed")
+        pcall(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/04adf4b7efffad41374a62e13396c97e.lua"))() end)
+        Window:Log("[G&B] Script Executed")
     end,
 })
 
 -- [ Sleep Paralysis ]
-SubCustom:CreateButton({
-    Name = "[Sleep] Teleport to Refuse",
+SubSleep:CreateButton({
+    Name = "Teleport to Refuse",
     Callback = function()
-        local ok, part = pcall(function()
-            return Workspace.Maze.Generators.CoreGenerator
-        end)
+        local ok, part = pcall(function() return Workspace.Maze.Generators.CoreGenerator end)
         if ok and part then
-            local hrp = localPlayer.Character and localPlayer.Character:FindFirstChild("HumanoidRootPart")
+            local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
             if hrp then
                 hrp.CFrame = part.CFrame + Vector3.new(0, 5, 0)
-                Window:Log("[Sleep] TP to Refuse Success")
+                Window:Log("[Sleep] TP Success")
             end
         else
-            Window:Log("[Sleep] CoreGenerator nggak ketemu")
+            Window:Log("[Sleep] CoreGenerator tidak ditemukan")
         end
     end,
 })
 
-SubCustom:CreateButton({
-    Name = "[Sleep] Get Gasoline",
+SubSleep:CreateButton({
+    Name = "Get Gasoline",
     Callback = function()
         local found = false
         for _, v in ipairs(Workspace:GetDescendants()) do
             if v:IsA("BasePart") and v.Name == "Item_payload" then
                 local prompt = v:FindFirstChildOfClass("ProximityPrompt")
                 if prompt and prompt.ActionText == "GAS CAN" then
-                    local hrp = localPlayer.Character and localPlayer.Character:FindFirstChild("HumanoidRootPart")
+                    local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
                     if hrp then
                         hrp.CFrame = v.CFrame + Vector3.new(0, 5, 0)
                         task.wait(0.2)
@@ -135,29 +232,26 @@ SubCustom:CreateButton({
                 end
             end
         end
-        if not found then
-            Window:Log("[Sleep] Gasoline nggak ketemu di map")
-        end
+        if not found then Window:Log("[Sleep] Gasoline tidak ada di map") end
     end,
 })
 
 -- [ Prism Runaway ]
 local PrismAntiAFK = false
 local PrismAFKConnection
-
-SubCustom:CreateToggle({
-    Name = "[Prism] Anti AFK",
+SubPrism:CreateToggle({
+    Name = "Anti AFK",
     Callback = function(Value)
         PrismAntiAFK = Value
         if Value then
-            Window:Log("[Prism] Anti AFK Active")
-            PrismAFKConnection = localPlayer.Idled:Connect(function()
+            PrismAFKConnection = LocalPlayer.Idled:Connect(function()
                 VirtualUser:CaptureController()
                 VirtualUser:ClickButton2(Vector2.new())
             end)
+            Window:Log("[Prism] Anti AFK Active")
         else
-            Window:Log("[Prism] Anti AFK Disabled")
             if PrismAFKConnection then PrismAFKConnection:Disconnect() end
+            Window:Log("[Prism] Anti AFK Disabled")
         end
     end,
 })
@@ -165,40 +259,35 @@ SubCustom:CreateToggle({
 -- [ Clean Leaves ]
 local LeavesAntiAFK = false
 local LeavesAFKConnection
-
-SubCustom:CreateToggle({
-    Name = "[Leaves] Anti AFK",
+SubLeaves:CreateToggle({
+    Name = "Anti AFK",
     Callback = function(Value)
         LeavesAntiAFK = Value
         if Value then
-            Window:Log("[Leaves] Anti AFK Active")
-            LeavesAFKConnection = localPlayer.Idled:Connect(function()
+            LeavesAFKConnection = LocalPlayer.Idled:Connect(function()
                 VirtualUser:CaptureController()
                 VirtualUser:ClickButton2(Vector2.new())
             end)
+            Window:Log("[Leaves] Anti AFK Active")
         else
-            Window:Log("[Leaves] Anti AFK Disabled")
             if LeavesAFKConnection then LeavesAFKConnection:Disconnect() end
+            Window:Log("[Leaves] Anti AFK Disabled")
         end
     end,
 })
 
 -- [ Royale High ]
 local RoyaleWalkEnabled = false
-
-SubCustom:CreateToggle({
-    Name = "[Royale] Auto Walk Straight",
+SubRoyale:CreateToggle({
+    Name = "Auto Walk Straight",
     Callback = function(Value)
         RoyaleWalkEnabled = Value
         if Value then
             Window:Log("[Royale] Auto Walk Active")
             task.spawn(function()
-                -- Ditambahkan Window.IsAlive sesuai dokumentasi
                 while RoyaleWalkEnabled and Window.IsAlive do
-                    local hrp = localPlayer.Character and localPlayer.Character:FindFirstChild("HumanoidRootPart")
-                    if hrp then
-                        hrp.CFrame = hrp.CFrame + hrp.CFrame.LookVector * 2
-                    end
+                    local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                    if hrp then hrp.CFrame = hrp.CFrame + hrp.CFrame.LookVector * 2 end
                     task.wait(0.1)
                 end
             end)
@@ -209,34 +298,31 @@ SubCustom:CreateToggle({
 })
 
 -- [ Grow a Garden 2 ]
-SubCustom:CreateButton({
-    Name = "[Garden 2] Swap to Halloween",
+SubGarden:CreateButton({
+    Name = "Swap to Halloween",
     Callback = function()
         pcall(function()
             local event = ReplicatedStorage.GameEvents.EasterEvent.LoadSpecialGardenRE
             if event then
                 event:FireServer("HALLOWEEN_2026")
-                Window:Log("[Garden 2] Swapped to Halloween")
+                Window:Log("[Garden 2] Swapped")
             end
         end)
     end,
 })
 
 local AutoBuySpeed = false
-SubCustom:CreateToggle({
-    Name = "[Garden 2] Auto Buy Speed Halloween",
+SubGarden:CreateToggle({
+    Name = "Auto Buy Speed Halloween",
     Callback = function(Value)
         AutoBuySpeed = Value
         if Value then
             Window:Log("[Garden 2] Auto Buy Active")
             task.spawn(function()
-                -- Ditambahkan Window.IsAlive sesuai dokumentasi
                 while AutoBuySpeed and Window.IsAlive do
                     pcall(function()
                         local event = ReplicatedStorage.GameEvents.BuyEventShopStock
-                        if event then
-                            event:FireServer("Halloween Candy Corn Carrot", "Scary Seeds")
-                        end
+                        if event then event:FireServer("Halloween Candy Corn Carrot", "Scary Seeds") end
                     end)
                     task.wait(0.5)
                 end
@@ -247,8 +333,8 @@ SubCustom:CreateToggle({
     end,
 })
 
-SubCustom:CreateButton({
-    Name = "[Garden 2] Auto Sell Seed Halloween",
+SubGarden:CreateButton({
+    Name = "Auto Sell Seed Halloween",
     Callback = function()
         pcall(function()
             local event = ReplicatedStorage.GameEvents.Events.Halloween2026Event.HalloweenSellInventoryRE
@@ -261,35 +347,31 @@ SubCustom:CreateButton({
 })
 
 -- [ Carve Wood ]
-SubCustom:CreateButton({
-    Name = "[Carve] Execute Auto Accuracy 100%",
+SubCarve:CreateButton({
+    Name = "Execute Auto Accuracy 100%",
     Callback = function()
-        pcall(function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/xuqor/Auto/refs/heads/main/Carve"))()
-        end)
+        pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/xuqor/Auto/refs/heads/main/Carve"))() end)
         Window:Log("[Carve] Accuracy Script Executed")
     end,
 })
 
 local AutoKillBoss = false
-SubCustom:CreateToggle({
-    Name = "[Carve] Auto Attack Haunted Tree",
+SubCarve:CreateToggle({
+    Name = "Auto Attack Haunted Tree",
     Callback = function(Value)
         AutoKillBoss = Value
         if Value then
             Window:Log("[Carve] Auto Kill Boss Active")
             task.spawn(function()
-                -- Ditambahkan Window.IsAlive sesuai dokumentasi
                 while AutoKillBoss and Window.IsAlive do
                     pcall(function()
                         local boss = Workspace:FindFirstChild("HauntedTree")
-                        local hrp = localPlayer.Character and localPlayer.Character:FindFirstChild("HumanoidRootPart")
+                        local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
                         local remoteEvent = ReplicatedStorage:FindFirstChild("REM") and ReplicatedStorage.REM:FindFirstChild("268eb158-4db5-481b-8c94-c70c6dd43903")
                         
                         if boss and hrp then
                             hrp.CFrame = boss.CFrame + Vector3.new(0, 8, 0)
                             task.wait(0.2)
-                            
                             if remoteEvent then
                                 local args = {
                                     {
