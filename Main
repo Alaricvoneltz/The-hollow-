@@ -9,7 +9,7 @@ local AlaricLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com
 
 local Window = AlaricLibrary:CreateWindow({
     Name = "Alaric Hub",
-    SubTitle = "Complete Edition"
+    SubTitle = "The Hollow"
 })
 
 -- ==================== TAB SYSTEM LOGS ====================
@@ -110,7 +110,7 @@ SubHollowMain:CreateButton({
     end
 })
 
--- ==================== TAB 2: UGC (7 SUB-TAB) ====================
+-- ==================== TAB 2: UGC (9 SUB-TAB) ====================
 local TabUGC = Window:CreateTab({ Name = "UGC" })
 
 local SubFlee = TabUGC:CreateSubTab({ Name = "Flee The Facility" })
@@ -135,7 +135,10 @@ local SubHomeAlone = TabUGC:CreateSubTab({ Name = "Home Alone" })
 AddScriptEntry(SubHomeAlone, "Script", "https://paste-web.baconbossscript.workers.dev/raw/FpDd0rU2TQ")
 
 local SubBananaEats = TabUGC:CreateSubTab({ Name = "Banana Eats" })
-AddScriptEntry(SubBananaEats, "Script", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/BananaEats")
+AddScriptEntry(SubBananaEats, "Script", "https://paste-web.baconbossscript.workers.dev/raw/Lyclby0kLI")
+
+local SubDress = TabUGC:CreateSubTab({ Name = Dress To Impress })
+AddScriptEntry(SubDress, "Script", "https://paste-web.baconbossscript.workers.dev/raw/ZtBuJ5p5c7")
 
 -- ==================== TAB 3: BADGE (21 SUB-TAB) ====================
 local TabBadge = Window:CreateTab({ Name = "Badge" })
