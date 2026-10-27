@@ -135,7 +135,8 @@ local SubHomeAlone = TabUGC:CreateSubTab({ Name = "Home Alone" })
 AddScriptEntry(SubHomeAlone, "Script", "https://paste-web.baconbossscript.workers.dev/raw/FpDd0rU2TQ")
 
 local SubBananaEats = TabUGC:CreateSubTab({ Name = "Banana Eats"})
-AddScriptEntry(SubBananaEats, "Script", "HttpGet("https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/BananaEats")
+AddScriptEntry(SubBananaEats, "Script", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/BananaEats")
+
 -- ==================== TAB 3: BADGE (21 SUB-TAB) ====================
 local TabBadge = Window:CreateTab({ Name = "Badge" })
 
