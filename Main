@@ -137,7 +137,7 @@ AddScriptEntry(SubHomeAlone, "Script", "https://paste-web.baconbossscript.worker
 local SubBananaEats = TabUGC:CreateSubTab({ Name = "Banana Eats" })
 AddScriptEntry(SubBananaEats, "Script", "https://paste-web.baconbossscript.workers.dev/raw/Lyclby0kLI")
 
-local SubDress = TabUGC:CreateSubTab({ Name = Dress To Impress })
+local SubDress = TabUGC:CreateSubTab({ Name = "Dress To Impress" })
 AddScriptEntry(SubDress, "Script", "https://paste-web.baconbossscript.workers.dev/raw/ZtBuJ5p5c7")
 
 -- ==================== TAB 3: BADGE (21 SUB-TAB) ====================
