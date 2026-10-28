@@ -37,37 +37,49 @@ end
 
 -- ==================== TAB 1: THE HOLLOW ====================
 local TabHollow = Window:CreateTab({ Name = "The Hollow" })
--- Sengaja dibuat 1 SubTab agar tidak kosong, menyesuaikan sistem library-mu
-local SubHollowMain = TabHollow:CreateSubTab({ Name = "Features" })
 
-AddScriptEntry(SubHollowMain, "Floor 1", "https://paste-web.baconbossscript.workers.dev/raw/U3eRMC390A")
-AddScriptEntry(SubHollowMain, "Floor 2", "https://paste-web.baconbossscript.workers.dev/raw/it5ijOv4wy")
-AddScriptEntry(SubHollowMain, "Floor 3", "https://paste-web.baconbossscript.workers.dev/raw/y9C7ndcH7u")
+local SubHollowMain = TabHollow:CreateSubTab({ Name = "The Hollow" })
+local SubHollowMore = TabHollow:CreateSubTab({ Name = "More" })
 
-SubHollowMain:CreateButton({
-    Name = "Instan quest floor 4",
-    Callback = function()
-        local RemoteUtils
-        pcall(function()
+local FloorScripts = {
+    ["Floor 1"] = "https://paste-web.baconbossscript.workers.dev/raw/U3eRMC390A",
+    ["Floor 2"] = "https://paste-web.baconbossscript.workers.dev/raw/it5ijOv4wy",
+    ["Floor 3"] = "https://paste-web.baconbossscript.workers.dev/raw/y9C7ndcH7u",
+    ["Floor 4"] = "https://paste-web.baconbossscript.workers.dev/raw/HohiNT23xo",
+    ["Floor 5"] = "https://paste-web.baconbossscript.workers.dev/raw/RuFK66IRKr",
+    ["Floor 6"] = "https://paste-web.baconbossscript.workers.dev/raw/TE6SBy1Go4",
+}
 
--- ==================== TAB 1: THE HOLLOW ====================
-local TabHollow = Window:CreateTab({ Name = "The Hollow" })
-local SubHollowMain = TabHollow:CreateSubTab({ Name = "Features" })
+local FloorOptions = {"Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6"}
 
--- [ Floor 1 ]
-AddScriptEntry(SubHollowMain, "Floor 1", "https://paste-web.baconbossscript.workers.dev/raw/U3eRMC390A")
+-- Dropdown Execute Script
+SubHollowMain:CreateDropdown({
+    Name = "Execute Floor Script",
+    Options = FloorOptions,
+    Callback = function(SelectedFloor)
+        local url = FloorScripts[SelectedFloor]
+        if url then
+            loadstring(game:HttpGet(url))()
+            Window:Log("Executed: " .. SelectedFloor)
+        end
+    end
+})
 
--- [ Floor 2 ]
-AddScriptEntry(SubHollowMain, "Floor 2", "https://paste-web.baconbossscript.workers.dev/raw/it5ijOv4wy")
+-- Dropdown Copy Script
+SubHollowMain:CreateDropdown({
+    Name = "Copy Floor Script",
+    Options = FloorOptions,
+    Callback = function(SelectedFloor)
+        local url = FloorScripts[SelectedFloor]
+        if url then
+            setclipboard('loadstring(game:HttpGet("' .. url .. '"))()')
+            Window:Log("Copied: " .. SelectedFloor)
+        end
+    end
+})
 
--- [ Floor 3 ]
-AddScriptEntry(SubHollowMain, "Floor 3", "https://paste-web.baconbossscript.workers.dev/raw/y9C7ndcH7u")
-
--- [ Floor 4 ]
-AddScriptEntry(SubHollowMain, "Floor 4", "https://paste-web.baconbossscript.workers.dev/raw/HohiNT23xo")
-
--- [ Fitur Tambahan: Auto-Win Zombie Bridge ]
-SubHollowMain:CreateButton({
+-- Sub-Tab More (Auto-Win Zombie Bridge)
+SubHollowMore:CreateButton({
     Name = "Execute Auto-Win Zombie Bridge",
     Callback = function()
         local RemoteUtils
@@ -82,10 +94,8 @@ SubHollowMain:CreateButton({
 
         local function getRemoteFunction(name)
             if RemoteUtils and RemoteUtils.GetRemoteFunction then
-                local success, rf = pcall(function()
-                    return RemoteUtils.GetRemoteFunction(name)
-                end)
-                if success and rf then return rf end
+                local suc, rf = pcall(function() return RemoteUtils.GetRemoteFunction(name) end)
+                if suc and rf then return rf end
             end
             return ReplicatedStorage:FindFirstChild(name, true)
         end
@@ -94,18 +104,13 @@ SubHollowMain:CreateButton({
         local finishRemote = getRemoteFunction("ZombieBridgeFinish")
 
         if pathRemote then
-            local success, data = pcall(function()
-                return pathRemote:InvokeServer()
-            end)
-            
-            if success and data and data.Path then
+            local suc, data = pcall(function() return pathRemote:InvokeServer() end)
+            if suc and data and data.Path then
                 local character = localPlayer.Character
                 local rootPart = character and character:FindFirstChild("HumanoidRootPart")
-                
                 if rootPart then
                     Window:Log("[Auto-Win] Jalur ditemukan! Teleportasi...")
                     local tileFolder = Workspace:FindFirstChild("ZombieBridgeProps") and Workspace.ZombieBridgeProps:FindFirstChild("Tiles")
-                    
                     if tileFolder then
                         for _, tileIndex in ipairs(data.Path) do
                             local tilePart = tileFolder:FindFirstChild("Tile" .. tileIndex)
@@ -115,29 +120,17 @@ SubHollowMain:CreateButton({
                             end
                         end
                     end
-                    
-                    if finishRemote then
-                        pcall(function()
-                            finishRemote:InvokeServer()
-                        end)
-                    end
+                    if finishRemote then pcall(function() finishRemote:InvokeServer() end) end
                     Window:Log("[Auto-Win] Selesai!")
                 end
             else
-                Window:Log("[Auto-Win] Gagal mengambil Path dari server!")
+                Window:Log("[Auto-Win] Gagal mengambil Path!")
             end
         else
             Window:Log("[Auto-Win] Remote tidak ditemukan.")
         end
     end
 })
-
--- [ Floor 5 ]
-AddScriptEntry(SubHollowMain, "Floor 5", "https://paste-web.baconbossscript.workers.dev/raw/RuFK66IRKr")
-
--- [ Floor 6 ]
-AddScriptEntry(SubHollowMain, "Floor 6", "https://paste-web.baconbossscript.workers.dev/raw/TE6SBy1Go4")
-
 
 -- ==================== TAB 2: UGC (9 SUB-TAB) ====================
 local TabUGC = Window:CreateTab({ Name = "UGC" })
