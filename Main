@@ -45,7 +45,7 @@ AddScriptEntry(SubHollowMain, "Floor 2", "https://paste-web.baconbossscript.work
 AddScriptEntry(SubHollowMain, "Floor 3", "https://paste-web.baconbossscript.workers.dev/raw/y9C7ndcH7u")
 
 SubHollowMain:CreateButton({
-    Name = "Execute Auto-Win Zombie Bridge",
+    Name = "Instan quest floor 5",
     Callback = function()
         local RemoteUtils
         pcall(function()
