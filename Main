@@ -54,25 +54,19 @@ SubHollowMain:CreateButton({
 local TabHollow = Window:CreateTab({ Name = "The Hollow" })
 local SubHollowMain = TabHollow:CreateSubTab({ Name = "Features" })
 
--- Catatan: Pastikan fungsi :CreateSection() sudah kamu tambahkan ke dalam 
--- raw library Alaricgui- di GitHub, karena sebelumnya kamu menyebutkan library-mu belum support ini.
-
 -- [ Floor 1 ]
 AddScriptEntry(SubHollowMain, "Floor 1", "https://paste-web.baconbossscript.workers.dev/raw/U3eRMC390A")
-SubHollowMain:CreateSection({ Name = "=========================" })
 
 -- [ Floor 2 ]
 AddScriptEntry(SubHollowMain, "Floor 2", "https://paste-web.baconbossscript.workers.dev/raw/it5ijOv4wy")
-SubHollowMain:CreateSection({ Name = "=========================" })
 
 -- [ Floor 3 ]
 AddScriptEntry(SubHollowMain, "Floor 3", "https://paste-web.baconbossscript.workers.dev/raw/y9C7ndcH7u")
-SubHollowMain:CreateSection({ Name = "=========================" })
 
 -- [ Floor 4 ]
 AddScriptEntry(SubHollowMain, "Floor 4", "https://paste-web.baconbossscript.workers.dev/raw/HohiNT23xo")
 
--- Auto-Win Zombie Bridge (Disisipkan di bawah Floor 4)
+-- [ Fitur Tambahan: Auto-Win Zombie Bridge ]
 SubHollowMain:CreateButton({
     Name = "Execute Auto-Win Zombie Bridge",
     Callback = function()
@@ -138,11 +132,8 @@ SubHollowMain:CreateButton({
     end
 })
 
-SubHollowMain:CreateSection({ Name = "=========================" })
-
 -- [ Floor 5 ]
 AddScriptEntry(SubHollowMain, "Floor 5", "https://paste-web.baconbossscript.workers.dev/raw/RuFK66IRKr")
-SubHollowMain:CreateSection({ Name = "=========================" })
 
 -- [ Floor 6 ]
 AddScriptEntry(SubHollowMain, "Floor 6", "https://paste-web.baconbossscript.workers.dev/raw/TE6SBy1Go4")
