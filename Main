@@ -80,7 +80,7 @@ SubHollowMain:CreateDropdown({
 
 -- Sub-Tab More (Auto-Win Zombie Bridge)
 SubHollowMore:CreateButton({
-    Name = "Execute Auto-Win Zombie Bridge",
+    Name = "instan Quest floor 4",
     Callback = function()
         local RemoteUtils
         pcall(function()
@@ -132,7 +132,7 @@ SubHollowMore:CreateButton({
     end
 })
 
--- ==================== TAB 2: UGC (9 SUB-TAB) ====================
+-- ==================== TAB 2: UGC (10 SUB-TAB) ====================
 local TabUGC = Window:CreateTab({ Name = "UGC" })
 
 local SubFlee = TabUGC:CreateSubTab({ Name = "Flee The Facility" })
@@ -161,6 +161,9 @@ AddScriptEntry(SubBanana, "Script", "https://paste-web.baconbossscript.workers.d
 
 local SubDress = TabUGC:CreateSubTab({ Name = "Dress To Impress" })
 AddScriptEntry(SubDress, "Script", "https://paste-web.baconbossscript.workers.dev/raw/ZtBuJ5p5c7")
+
+local SubNight = TabUGC:CreateSubTab({ Name = "99 night in the forest" })
+AddScriptEntry(SubNight, "Script", "https://paste-web.baconbossscript.workers.dev/raw/uwCctC2QTh")
 
 
 -- ==================== TAB 3: BADGE (21 SUB-TAB) ====================
