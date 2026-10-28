@@ -44,6 +44,8 @@ AddScriptEntry(SubHollowMain, "Floor 1", "https://paste-web.baconbossscript.work
 AddScriptEntry(SubHollowMain, "Floor 2", "https://paste-web.baconbossscript.workers.dev/raw/it5ijOv4wy")
 AddScriptEntry(SubHollowMain, "Floor 3", "https://paste-web.baconbossscript.workers.dev/raw/y9C7ndcH7u")
 AddScriptEntry(SubHollowMain, "Floor 4", "https://paste-web.baconbossscript.workers.dev/raw/HohiNT23xo")
+AddScriptEntry(SubHollowMain, "Floor 5", "https://paste-web.baconbossscript.workers.dev/raw/RuFK66IRKr")
+
 
 SubHollowMain:CreateButton({
     Name = "Execute Auto-Win Zombie Bridge",
