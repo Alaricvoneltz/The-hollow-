@@ -48,9 +48,10 @@ local FloorScripts = {
     ["Floor 4"] = "https://paste-web.baconbossscript.workers.dev/raw/HohiNT23xo",
     ["Floor 5"] = "https://paste-web.baconbossscript.workers.dev/raw/RuFK66IRKr",
     ["Floor 6"] = "https://paste-web.baconbossscript.workers.dev/raw/TE6SBy1Go4",
+    ["Floor 7"] = "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/TheHollowFloor7",
 }
 
-local FloorOptions = {"Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6"}
+local FloorOptions = {"Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6", "Floor 7"}
 
 -- Dropdown Execute Script
 SubHollowMain:CreateDropdown({
@@ -165,6 +166,8 @@ AddScriptEntry(SubDress, "Script", "https://paste-web.baconbossscript.workers.de
 local SubNight = TabUGC:CreateSubTab({ Name = "99 night in the forest" })
 AddScriptEntry(SubNight, "Script", "https://paste-web.baconbossscript.workers.dev/raw/uwCctC2QTh")
 
+local SubAnimal = TabUGC:CreateSubTab({ Name = "Animal Hospital" })
+AddScriptEntry(SubAnimal, "Script", "https://paste-web.baconbossscript.workers.dev/raw/GIHmJDbDtg")
 
 -- ==================== TAB 3: BADGE (21 SUB-TAB) ====================
 local TabBadge = Window:CreateTab({ Name = "Badge" })
@@ -212,6 +215,8 @@ AddScriptEntry(SubKeyboard, "Script", "https://raw.githubusercontent.com/MainTre
 local SubRacket = TabBadge:CreateSubTab({ Name = "Racket Rival" })
 AddScriptEntry(SubRacket, "Script", "https://access.valkorym.com/RacketRivals.lua")
 
+local SubBasketball = TabBadge:CreateSubTab({ Name = "Basketball Legends" })
+AddScriptEntry(SubBasketball, "Script", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/BasketballLegends")
 
 -- 7 Custom Helpers (Dibuat jadi Sub-Tab sesuai game)
 local SubGuts = TabBadge:CreateSubTab({ Name = "Guts and Black Powder" })
