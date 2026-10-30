@@ -48,10 +48,11 @@ local FloorScripts = {
     ["Floor 4"] = "https://paste-web.baconbossscript.workers.dev/raw/HohiNT23xo",
     ["Floor 5"] = "https://paste-web.baconbossscript.workers.dev/raw/RuFK66IRKr",
     ["Floor 6"] = "https://paste-web.baconbossscript.workers.dev/raw/TE6SBy1Go4",
-    ["Floor 7"] = "https://paste-web.baconbossscript.workers.dev/raw/54Vc67uGbN", 
+    ["Floor 7"] = "https://paste-web.baconbossscript.workers.dev/raw/54Vc67uGbN",
+    ["Floor 8"] = "https://paste-web.baconbossscript.workers.dev/raw/VOFqGdTtVX", -- Floor 8 Baconbosss
 }
 
-local FloorOptions = {"Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6", "Floor 7"}
+local FloorOptions = {"Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6", "Floor 7", "Floor 8"}
 
 -- Dropdown Execute Script
 SubHollowMain:CreateDropdown({
@@ -133,6 +134,23 @@ SubHollowMore:CreateButton({
     end
 })
 
+-- Sub-Tab More (Tempat Script Tambahan / MainTree)
+SubHollowMore:CreateButton({
+    Name = "Execute Floor 7 (MainTree)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/TheHollowFloor7"))()
+        Window:Log("Executed: Floor 7 (MainTree)")
+    end,
+})
+
+SubHollowMore:CreateButton({
+    Name = "Execute Floor 8 (MainTree)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/TheHollowFloor8"))()
+        Window:Log("Executed: Floor 8 (MainTree)")
+    end,
+})
+
 SubHollowMore:CreateButton({
     Name = "Execute Floor 7 (Old Script)",
     Callback = function()
@@ -188,8 +206,18 @@ AddScriptEntry(SubAnimal, "Script", "https://paste-web.baconbossscript.workers.d
 local SubSurviveKiller = TabUGC:CreateSubTab({ Name = "Survive The Killer" })
 AddScriptEntry(SubSurviveKiller, "Script", "https://paste-web.baconbossscript.workers.dev/raw/vVaoDwOvCE")
 
+-- Sub-Tab Peta Peta
+local SubPeta = TabUGC:CreateSubTab({ Name = "Peta Peta" })
+AddScriptEntry(SubPeta, "Script", "https://paste-web.baconbossscript.workers.dev/raw/DIM28h3MLK")
+
+-- Sub-Tab Warden
+local SubWarden = TabUGC:CreateSubTab({ Name = "Warden" })
+AddScriptEntry(SubWarden, "Script", "https://paste-web.baconbossscript.workers.dev/raw/QGyHmVCKaE")
+
+-- Sub-Tab Shawarma Kiosk (Sekarang memiliki 2 tombol versi beda)
 local SubShawarma = TabUGC:CreateSubTab({ Name = "Shawarma Kiosk" })
-AddScriptEntry(SubShawarma, "Script", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/ScaryShawarmaKiosk")
+AddScriptEntry(SubShawarma, "Shawarma (MainTree)", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/ScaryShawarmaKiosk")
+AddScriptEntry(SubShawarma, "Shawarma (Baconbosss)", "https://paste-web.baconbossscript.workers.dev/raw/Vi2Q9K3sS7")
 
 -- ==================== TAB 3: BADGE (21 SUB-TAB) ====================
 local TabBadge = Window:CreateTab({ Name = "Badge" })
