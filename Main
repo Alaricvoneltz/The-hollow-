@@ -210,8 +210,8 @@ AddScriptEntry(SubSurviveKiller, "Script", "https://paste-web.baconbossscript.wo
 local SubPeta = TabUGC:CreateSubTab({ Name = "Peta Peta" })
 AddScriptEntry(SubPeta, "petapeta", "https://paste-web.baconbossscript.workers.dev/raw/DIM28h3MLK")
 AddScriptEntry(SubPeta, "petapeta2", "https://raw.githubusercontent.com/EnzoLeo127/Scripts/main/TheHollowPETAPETA")
--- Sub-Tab Warden
 
+-- Sub-Tab Warden
 local SubWarden = TabUGC:CreateSubTab({ Name = "Warden" })
 AddScriptEntry(SubWarden, "Script", "https://paste-web.baconbossscript.workers.dev/raw/QGyHmVCKaE")
 
