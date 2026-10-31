@@ -49,10 +49,12 @@ local FloorScripts = {
     ["Floor 5"] = "https://paste-web.baconbossscript.workers.dev/raw/RuFK66IRKr",
     ["Floor 6"] = "https://paste-web.baconbossscript.workers.dev/raw/TE6SBy1Go4",
     ["Floor 7"] = "https://paste-web.baconbossscript.workers.dev/raw/54Vc67uGbN",
-    ["Floor 8"] = "https://paste-web.baconbossscript.workers.dev/raw/VOFqGdTtVX", -- Floor 8 Baconbosss
+    ["Floor 8"] = "https://paste-web.baconbossscript.workers.dev/raw/VOFqGdTtVX",
+    ["Floor 9"] = "https://paste-web.baconbossscript.workers.dev/raw/U1QZDYg4bc", -- Floor 9 Baconbosss
 }
 
-local FloorOptions = {"Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6", "Floor 7", "Floor 8"}
+local FloorOptions = {"Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6", "Floor 7", "Floor 8", "Floor 9"}
+
 
 -- Dropdown Execute Script
 SubHollowMain:CreateDropdown({
@@ -219,6 +221,18 @@ AddScriptEntry(SubWarden, "Script", "https://paste-web.baconbossscript.workers.d
 local SubShawarma = TabUGC:CreateSubTab({ Name = "Shawarma Kiosk" })
 AddScriptEntry(SubShawarma, "Shawarma (MainTree)", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/ScaryShawarmaKiosk")
 AddScriptEntry(SubShawarma, "Shawarma (Baconbosss)", "https://paste-web.baconbossscript.workers.dev/raw/Vi2Q9K3sS7")
+
+-- Sub-Tab The Mimic
+local SubMimic = TabUGC:CreateSubTab({ Name = "The Mimic" })
+AddScriptEntry(SubMimic, "Script", "https://paste-web.baconbossscript.workers.dev/raw/7IksW7W8kb")
+
+-- Sub-Tab Bear
+local SubBear = TabUGC:CreateSubTab({ Name = "Bear" })
+AddScriptEntry(SubBear, "Script", "https://paste-web.baconbossscript.workers.dev/raw/u2x8LbNSz3")
+
+-- Sub-Tab Piggy
+local SubPiggy = TabUGC:CreateSubTab({ Name = "Piggy" })
+AddScriptEntry(SubPiggy, "Script", "https://paste-web.baconbossscript.workers.dev/raw/9jEh6bOWIO")
 
 -- ==================== TAB 3: BADGE (21 SUB-TAB) ====================
 local TabBadge = Window:CreateTab({ Name = "Badge" })
