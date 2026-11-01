@@ -173,7 +173,8 @@ SubHollowMore:CreateButton({
 local TabUGC = Window:CreateTab({ Name = "UGC" })
 
 local SubFlee = TabUGC:CreateSubTab({ Name = "Flee The Facility" })
-AddScriptEntry(SubFlee, "Script", "https://raw.githubusercontent.com/Infected01/Flee-The-Facility/refs/heads/main/Hammer")
+AddScriptEntry(SubFlee, "Flee The Facility 1", "https://raw.githubusercontent.com/Infected01/Flee-The-Facility/refs/heads/main/Hammer")
+AddScriptEntry(SubFlee, "Flee The Facility 2", "https://paste-web.baconbossscript.workers.dev/raw/n48XV1jhbK")
 
 local SubAooni = TabUGC:CreateSubTab({ Name = "Aooni Nightmare" })
 AddScriptEntry(SubAooni, "Script", "https://paste-web.baconbossscript.workers.dev/raw/qexa0dgJjg")
