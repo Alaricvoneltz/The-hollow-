@@ -286,6 +286,9 @@ AddScriptEntry(SubBasketball, "Script", "https://raw.githubusercontent.com/MainT
 local SubHollowBadge = TabBadge:CreateSubTab({ Name = "Carve Wood" })
 AddScriptEntry(SubHollowBadge, "Script", "https://paste-web.baconbossscript.workers.dev/raw/or1DGXAAli")
 
+local SubCleanCrew = TabBadge:CreateSubTab({ Name = "Clean Crew" })
+AddScriptEntry(SubCleanCrew, "Script", "https://paste-web.baconbossscript.workers.dev/raw/vsPI3i63Td")
+
 
 -- 7 Custom Helpers (Dibuat jadi Sub-Tab sesuai game)
 local SubGuts = TabBadge:CreateSubTab({ Name = "Guts and Black Powder" })
