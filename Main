@@ -50,11 +50,11 @@ local FloorScripts = {
     ["Floor 6"] = "https://paste-web.baconbossscript.workers.dev/raw/TE6SBy1Go4",
     ["Floor 7"] = "https://paste-web.baconbossscript.workers.dev/raw/54Vc67uGbN",
     ["Floor 8"] = "https://paste-web.baconbossscript.workers.dev/raw/VOFqGdTtVX",
-    ["Floor 9"] = "https://paste-web.baconbossscript.workers.dev/raw/U1QZDYg4bc", -- Floor 9 Baconbosss
+    ["Floor 9"] = "https://paste-web.baconbossscript.workers.dev/raw/U1QZDYg4bc",
+    ["Floor 10"] = "https://paste-web.baconbossscript.workers.dev/raw/EUExWjXBpw", -- Floor 10 Baru
 }
 
-local FloorOptions = {"Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6", "Floor 7", "Floor 8", "Floor 9"}
-
+local FloorOptions = {"Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5", "Floor 6", "Floor 7", "Floor 8", "Floor 9", "Floor 10"}
 
 -- Dropdown Execute Script
 SubHollowMain:CreateDropdown({
@@ -283,6 +283,10 @@ AddScriptEntry(SubRacket, "Script", "https://access.valkorym.com/RacketRivals.lu
 local SubBasketball = TabBadge:CreateSubTab({ Name = "Basketball Legends" })
 AddScriptEntry(SubBasketball, "Script", "https://raw.githubusercontent.com/MainTreeUhh/TheHollowEvent/main/BasketballLegends")
 
+local SubHollowBadge = TabBadge:CreateSubTab({ Name = "Carve Wood" })
+AddScriptEntry(SubHollowBadge, "Script", "https://paste-web.baconbossscript.workers.dev/raw/or1DGXAAli")
+
+
 -- 7 Custom Helpers (Dibuat jadi Sub-Tab sesuai game)
 local SubGuts = TabBadge:CreateSubTab({ Name = "Guts and Black Powder" })
 SubGuts:CreateButton({
@@ -399,34 +403,3 @@ SubGarden:CreateButton({
     Callback = function() pcall(function() ReplicatedStorage.GameEvents.Events.Halloween2026Event.HalloweenSellInventoryRE:FireServer() end) end,
 })
 
-local SubCarve = TabBadge:CreateSubTab({ Name = "Carve Wood" })
-SubCarve:CreateButton({
-    Name = "Execute Auto Accuracy",
-    Callback = function() pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/xuqor/Auto/refs/heads/main/Carve"))() end) end,
-})
-local CarveAutoKill = false
-SubCarve:CreateToggle({
-    Name = "Auto Attack Haunted Tree",
-    Callback = function(Value)
-        CarveAutoKill = Value
-        if Value then
-            task.spawn(function()
-                while CarveAutoKill and Window.IsAlive do
-                    pcall(function()
-                        local boss = Workspace:FindFirstChild("HauntedTree")
-                        local hrp = localPlayer.Character and localPlayer.Character:FindFirstChild("HumanoidRootPart")
-                        if boss and hrp then
-                            hrp.CFrame = boss.CFrame + Vector3.new(0, 8, 0)
-                            task.wait(0.2)
-                            local remoteEvent = ReplicatedStorage:FindFirstChild("REM") and ReplicatedStorage.REM:FindFirstChild("268eb158-4db5-481b-8c94-c70c6dd43903")
-                            if remoteEvent then
-                                remoteEvent:FireServer({Dir = Vector3.new(-0.063, 0, -0.998), Kind = "Swing", Pos = Vector3.new(-888, 34, -1397), Combo = 3})
-                            end
-                        end
-                    end)
-                    task.wait(0.4)
-                end
-            end)
-        end
-    end,
-})
