@@ -82,6 +82,9 @@ SubHollowMain:CreateDropdown({
     end
 })
 
+local SubHollowFloor = TabHollow:CreateSubTab({ Name = "Floor" })
+AddScriptEntry(SubHollowFloor, "Floor Script", "https://paste-web.baconbossscript.workers.dev/raw/UzIlfq6TGC")
+
 -- Sub-Tab More (Auto-Win Zombie Bridge)
 SubHollowMore:CreateButton({
     Name = "instan Quest floor 4",
@@ -168,6 +171,8 @@ SubHollowMore:CreateButton({
         Window:Log("Copied: Floor 7 (Old Script)")
     end,
 })
+
+AddScriptEntry(SubHollowMore, "Fisch", "https://paste-web.baconbossscript.workers.dev/raw/XG0iszEs0c")
 
 -- ==================== TAB 2: UGC (13 SUB-TAB) ====================
 local TabUGC = Window:CreateTab({ Name = "UGC" })
@@ -290,6 +295,8 @@ AddScriptEntry(SubHollowBadge, "Script", "https://paste-web.baconbossscript.work
 local SubCleanCrew = TabBadge:CreateSubTab({ Name = "Clean Crew" })
 AddScriptEntry(SubCleanCrew, "Script", "https://paste-web.baconbossscript.workers.dev/raw/vsPI3i63Td")
 
+local SubEvade = TabBadge:CreateSubTab({ Name = "Evade" })
+AddScriptEntry(SubEvade, "Script", "https://paste-web.baconbossscript.workers.dev/raw/6jg4i4wSGD")
 
 -- 7 Custom Helpers (Dibuat jadi Sub-Tab sesuai game)
 local SubGuts = TabBadge:CreateSubTab({ Name = "Guts and Black Powder" })
